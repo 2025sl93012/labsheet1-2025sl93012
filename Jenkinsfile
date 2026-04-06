@@ -43,15 +43,11 @@ EOF
 
         stage('Deploy') {
             steps {
-                sh 'echo "Deploy Stage"'
+                sh  '''
+        scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/key.pem calculator.py ec2-user@ec2-13-62-19-253.eu-north-1.compute.amazonaws.com:/home/ec2-user
+        '''
             }
         }
     }
 }
-stage('Deploy') {
-steps {
-        sh '''
-        scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/key.pem calculator.py ec2-userec2-user@ec2-51-20-51-77.eu-north-1.compute.amazonaws.com:/home/ec2-user
-        '''
-    }
-}
+
